@@ -1,4 +1,5 @@
 # SilentBell
+Backend en nodejs + express + mongodb
 
 ## Installation
 
