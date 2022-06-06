@@ -1,14 +1,15 @@
 version: "3.8"
 services:
   mongodb:
-    image: mongo:5.0.2
-    restart: unless-stopped
+    image: mongo
     env_file: ./.env
     environment:
       - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USER
       - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
     ports:
       - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
+ #   ports:
+ #     - 27017:27017
     volumes:
       - db:/data/db
   app:
@@ -16,6 +17,7 @@ services:
       - mongodb
     build: .
     restart: unless-stopped
+    # Si el fitxer es diu .env es pot ometre la línia
     env_file: ./.env
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
@@ -25,8 +27,8 @@ services:
       - DB_PASSWORD=$MONGODB_PASSWORD
       - DB_NAME=$MONGODB_DATABASE
       - DB_PORT=$MONGODB_DOCKER_PORT
-    stdin_open: true
-    tty: true
+#    ports:
+#      - 8080:8080
     volumes:
       - .:/opt/app
       - /opt/app/node_modules

@@ -7,10 +7,13 @@ let aulaSchema = new mongoose.Schema({
         minlength: 1,
         trim: true
     },
-    numerod: {
+    numero: {
         type: Number,
         min: 0
 } });
 
+
+// Primer paràmetre colecció en singular 
 let Aula = mongoose.model('aula', aulaSchema);
+
 module.exports = Aula;

@@ -4,4 +4,4 @@ COPY package.json .
 RUN npm install --quiet
 RUN npm install -g nodemon --quiet
 COPY . .
-CMD nodemon -L --watch . index.js
+CMD nodemon -L --watch . app/index.js
